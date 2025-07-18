@@ -1,0 +1,8 @@
+identifier="BadApple:Willow Tree"
+name="BadApple"
+description="Just don't."
+authors=["Willow Tree"]
+dependencies=["VoxelEras:DestinyHailstorm","Factoryplusplus:Willow Tree","Stones:Willow Tree"]
+entry="BadApple/entry.rhai"
+version="0.1.0"
+sync=false
