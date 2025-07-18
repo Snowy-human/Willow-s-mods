@@ -2,4 +2,4 @@
 
 All of these mods are free and open.
 
-For now Factory++ is the main mod with Stones being a nice building mod for now unil world gen can be moded
+For now Factory++ is the main mod with Stones being a nice building mod for now until world gen can be moded
