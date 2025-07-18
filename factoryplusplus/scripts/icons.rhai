@@ -5,6 +5,6 @@ fn define(mod_info) {
 	));
 	mod_info.add(TextureBuilder(
 		"PlateOutputIcon:Factory++",
-		"factoryplusplus/assets/icons/pipeoutputicon.png"
+		"factoryplusplus/assets/icons/plateoutputicon.png"
 	));
 }

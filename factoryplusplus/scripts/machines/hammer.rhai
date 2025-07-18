@@ -6,7 +6,7 @@ const MAX_ENERGY = game::TICK_RATE / 2;
 fn define(mod_info) {
 	mod_info.add(TextureBuilder(
         "HammerIcon:Factory++",
-        "factoryplusplus/assets/textures/benderside.png",
+        "factoryplusplus/assets/textures/hammerside.png",
     ));
 
 	mod_info.add(
@@ -17,10 +17,10 @@ fn define(mod_info) {
 		).model(
 			SolidVoxelModel(
 			"voxel_eras/assets/textures/AlloyFurnaceTop.png",
-			"factoryplusplus/assets/textures/benderside.png",
+			"factoryplusplus/assets/textures/hammerside.png",
 			"voxel_eras/assets/textures/AlloyFurnaceBottom.png"
 		))
-		.pipette("Bender:Factory++")
+		.pipette("hammer:Factory++")
 		.break_rate(voxel::BREAK_RATE_MACHINE)
 		.tag("Solid:VoxelEras")
 		.does_break()
@@ -41,7 +41,7 @@ fn define(mod_info) {
 		).model(
 			SolidVoxelModel(
 			"voxel_eras/assets/textures/AlloyFurnaceTop.png",
-			"factoryplusplus/assets/textures/benderonanim.png",
+			"factoryplusplus/assets/textures/hammeronanim.png",
 			"voxel_eras/assets/textures/AlloyFurnaceBottom.png"
 		))
 		.pipette("Hammer:Factory++")
@@ -323,7 +323,7 @@ private fn grinder_interactables(ui, location, voxel, entity, client_state) {
 				false
 			},
 			"PlateOutputIcon:Factory++",
-			"The output of the bender.\nCan be taken from all sides."
+			"The output of the hammer.\nCan be taken from all sides."
 		);
 
 		if slot_interact.clicked() || slot_interact.secondary_clicked() {
