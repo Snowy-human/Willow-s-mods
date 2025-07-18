@@ -20,7 +20,7 @@ fn define(mod_info) {
 			"factoryplusplus/assets/textures/hammerside.png",
 			"voxel_eras/assets/textures/AlloyFurnaceBottom.png"
 		))
-		.pipette("hammer:Factory++")
+		.pipette("Hammer:Factory++")
 		.break_rate(voxel::BREAK_RATE_MACHINE)
 		.tag("Solid:VoxelEras")
 		.does_break()
