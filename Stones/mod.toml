@@ -1,0 +1,8 @@
+identifier="Stones:Willow Tree"
+name="Stones"
+description="Stones is a mod for VoxelEras by Destiny Hailstorm to add diffent stones"
+authors=["Willow Tree"]
+dependencies=["VoxelEras:DestinyHailstorm","Factoryplusplus:Willow Tree"]
+entry="Stones/entry.rhai"
+version="0.1.2"
+sync=false

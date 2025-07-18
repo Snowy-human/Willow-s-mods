@@ -1,0 +1,8 @@
+identifier="Factoryplusplus:Willow Tree"
+name="Factory++"
+description="Factory++ is a mod for VoxelEras by Destiny Hailstorm to add diffent machines and tech"
+authors=["Willow Tree"]
+dependencies=["VoxelEras:DestinyHailstorm"]
+entry="factoryplusplus/entry.rhai"
+version="0.0.1"
+sync=false
