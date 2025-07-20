@@ -13,7 +13,7 @@ fn define(mod_info) {
 		VoxelBuilder(
 			"HammerOff:Factory++",
 			"Hammer (Off)",
-			"factoryplusplus/scripts/machines/Hammer.rhai"
+			"factoryplusplus/scripts/machines/hammer.rhai"
 		).model(
 			SolidVoxelModel(
 			"voxel_eras/assets/textures/AlloyFurnaceTop.png",
@@ -37,7 +37,7 @@ fn define(mod_info) {
 		VoxelBuilder(
 			"HammerOn:Factory++",
 			"Hammer (On)",
-			"factoryplusplus/scripts/machines/Hammer.rhai"
+			"factoryplusplus/scripts/machines/hammer.rhai"
 		).model(
 			SolidVoxelModel(
 			"voxel_eras/assets/textures/AlloyFurnaceTop.png",

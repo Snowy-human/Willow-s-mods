@@ -13,7 +13,7 @@ fn define(mod_info) {
 		VoxelBuilder(
 			"Banded:Stones",
 			"Banded iron",
-			"Stones/scripts/blocks/Banded.rhai"
+			"Stones/scripts/blocks/banded.rhai"
 		).model(SolidVoxelModel(
 			"Stones/assets/textures/banded.png",
 			"Stones/assets/textures/bandedtop.png",
