@@ -290,7 +290,7 @@ private fn grinder_interactables(ui, location, voxel, entity, client_state) {
 			} else {
 				false
 			},
-			"FurnaceOutputIcon:VoxelEras",
+			"PlateOutputIcon:Factory++",
 			"Insert a bendable into this slot.\nCan be input into from any side."
 		);
 
