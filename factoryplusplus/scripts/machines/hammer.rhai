@@ -91,6 +91,26 @@ fn define(mod_info) {
 		.with_input(WeakItemStack("CarbonSteelIngot:VoxelEras", 1))
 		.with_output(WeakItemStack("CarbonSteelPlate:VoxelEras", 1))
 	);
+	mod_info.add(
+		RecipeBuilder(
+			"WroughtIronPlateHammer:Factory++",
+			"Hammer a carbon steel into a plate",
+			0,
+			"WroughtIronPlateIcon:VoxelEras"
+		).crafted_in("Hammer:Factory++")
+		.with_input(WeakItemStack("WroughtIronIngot:VoxelEras", 1))
+		.with_output(WeakItemStack("WroughtIronPlate:VoxelEras", 1))
+	);
+	mod_info.add(
+		RecipeBuilder(
+			"BronzePlateHammer:Factory++",
+			"Hammer a carbon steel into a plate",
+			0,
+			"BronzePlateIcon:VoxelEras"
+		).crafted_in("Hammer:Factory++")
+		.with_input(WeakItemStack("BronzeIngot:VoxelEras", 1))
+		.with_output(WeakItemStack("BronzePlate:VoxelEras", 1))
+	);
 }
 
 fn on_break(voxel, location, target, entity, game_state) {
