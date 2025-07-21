@@ -215,7 +215,7 @@ fn on_interacting(voxel, location, entity, egui, client_state) {
 				"Tired of making plates? Well this baby can do that for you. Lazy ass. Pipes can insert items to Hammer, and extract them."
 			);
 
-			grinder_ui(ui, location, voxel, entity, client_state);
+			hammer_ui(ui, location, voxel, entity, client_state);
 
 			player::inventory_ui(
 				ui,
@@ -263,17 +263,17 @@ fn on_message(voxel, location, type, message, game_state) {
 	event::ACCEPT
 }
 
-private fn grinder_ui(ui, location, voxel, entity, client_state) {
+private fn hammer_ui(ui, location, voxel, entity, client_state) {
 	ui.vertical_centered_justified(|ui| {
 		ui.set_width(150.);
 
 		ui.columns(3, |ui| {
-			grinder_interactables(ui, location, voxel, entity, client_state);
+			hammer_interactables(ui, location, voxel, entity, client_state);
 		});
 	});
 }
 
-private fn grinder_interactables(ui, location, voxel, entity, client_state) {
+private fn hammer_interactables(ui, location, voxel, entity, client_state) {
 	const FIRE_FRAMES = 8;
 	const COOK_FRAMES = 15;
 
@@ -296,12 +296,13 @@ private fn grinder_interactables(ui, location, voxel, entity, client_state) {
 			"Insert a ingot into this slot.\nCan be input into from any side."
 		);
 
-		if slot_interact.clicked() || slot_interact.secondary_clicked() {
+		if slot_interact.clicked_down() || slot_interact.secondary_clicked() {
 			let metadata = MetaData();
 			metadata.set_slot_ref("State:ClickedSlot", metadata::SlotRef(
 				1,
 				0,
-				slot_interact.clicked(),
+				slot_interact.clicked_down(),
+				slot_interact.shifting(),
 			));
 			client_state.action(location, "Transfer", metadata);
 		}
@@ -326,12 +327,13 @@ private fn grinder_interactables(ui, location, voxel, entity, client_state) {
 			"The output of the hammer.\nCan be taken from all sides."
 		);
 
-		if slot_interact.clicked() || slot_interact.secondary_clicked() {
+		if slot_interact.clicked_down() || slot_interact.secondary_clicked() {
 			let metadata = MetaData();
 			metadata.set_slot_ref("State:ClickedSlot", metadata::SlotRef(
 				1,
 				1,
-				slot_interact.clicked(),
+				slot_interact.clicked_down(),
+				slot_interact.shifting(),
 			));
 			client_state.action(location, "Transfer", metadata);
 		}
