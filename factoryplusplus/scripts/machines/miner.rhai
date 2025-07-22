@@ -18,7 +18,7 @@ fn define(mod_info) {
     ));
 
 	define_variant(
-		"SupMiner:Factory++",
+		"SupMinerOff:Factory++",
 		"Miner (Unpowered)",
 		SolidVoxelModel(
 			"voxel_eras/assets/textures/OakPlankOutput.png",
@@ -40,7 +40,7 @@ fn define(mod_info) {
 	);
 
 	define_variant(
-		"SupMinerStuck:VoxelEras",
+		"SupMinerStuck:Factory++",
 		"Miner (Stalled)",
 		SolidVoxelModel(
 			"voxel_eras/assets/textures/OakPlankOutput.png",
@@ -77,27 +77,25 @@ fn define(mod_info) {
 					WeakConstructRequirement("Stone:VoxelEras")
 				)
 		)
-		.cost(WeakItemStack("OakPlank:VoxelEras", 4))
-		.cost(WeakItemStack("WoodenGear:VoxelEras", 4))
-		.cost(WeakItemStack("PigIronIngot:VoxelEras", 8))
+		.cost(WeakItemStack("OakPlank:VoxelEras", 1))
 		.priority(2)
 	);
 
 	mod_info.add(SoundBuilder(
-		"ClockworkDrillProgress1:VoxelEras",
-		"Clockwork Drill Progress",
+		"SupMinerProgress1:Factory++",
+		"Miner Progress",
 		"voxel_eras/assets/sounds/ClockworkDrillProgress1.mp3"
 	));
 
 	mod_info.add(SoundBuilder(
-		"ClockworkDrillProgress2:VoxelEras",
-		"Clockwork Drill Progress",
+		"SupMinerProgress2:Factory++",
+		"Miner Progress",
 		"voxel_eras/assets/sounds/ClockworkDrillProgress2.mp3"
 	));
 
 	mod_info.add(SoundBuilder(
-		"ClockworkDrillTick:VoxelEras",
-		"Clockwork Drill Tick",
+		"SupMinerTick:Factory++",
+		"Miner Drill Tick",
 		"voxel_eras/assets/sounds/ClockworkDrillTick.mp3"
 	));
 }
@@ -107,9 +105,9 @@ private fn define_variant(identifier, name, model, mod_info) {
 		VoxelBuilder(
 			identifier,
 			name,
-			"voxel_eras/scripts/nomad/clockwork_drill.rhai"
+			"factoryplusplus/scripts/machines/miner.rhai"
 		).model(model)
-		.pipette("ClockworkDrill:VoxelEras")
+		.pipette("SupMiner:Factory++")
 		.break_rate(voxel::BREAK_RATE_MACHINE)
 		.tag("Solid:VoxelEras")
 		.does_break()
@@ -121,9 +119,7 @@ private fn define_variant(identifier, name, model, mod_info) {
 
 fn on_break(voxel, location, target, entity, game_state) {
 	if location == target {
-		game_state.drop(WeakItemStack("OakPlank:VoxelEras", 4), location);
-		game_state.drop(WeakItemStack("WoodenGear:VoxelEras", 4), location);
-		game_state.drop(WeakItemStack("PigIronIngot:VoxelEras", 8), location);
+		game_state.drop(WeakItemStack("OakPlank:VoxelEras", 1), location);
 	}
 
 	event::ACCEPT
@@ -175,7 +171,7 @@ fn on_tick(voxel, location, game_state) {
 	let energy = voxel.metadata.get_u64("State:ClockworkEnergy");
 	let progress = voxel.metadata.get_u64("State:Progress");
 
-	if energy == 0 && progress == 0 && voxel.prefab.identifier != "ClockworkDrillOn:VoxelEras" {
+	if energy == 0 && progress == 0 && voxel.prefab.identifier != "SupMinerOn:Factory++" {
 		return event::ACCEPT;
 	}
 
@@ -190,7 +186,7 @@ fn on_tick(voxel, location, game_state) {
 
 	if was_running && progress % (game::TICK_RATE / 4) == 3 {
 		audio::spawn_oneshot_3d(
-			"ClockworkDrillTick:VoxelEras",
+			"SupMinerTick:Factory++",
 			"Machine:VoxelEras",
 			Vec3(location.x.to_float() + 0.5, location.y.to_float() + 0.5, location.z.to_float() + 0.5),
 			game_state,
@@ -267,11 +263,11 @@ fn on_tick(voxel, location, game_state) {
 		location,
 		game_state.get_voxel_prefab(
 			if stalled {
-				"ClockworkDrillStuck:VoxelEras"
+				"SupMinerStuck:Factory++"
 			} else if was_running {
-				"ClockworkDrillOn:VoxelEras"
+				"SupMinerOn:Factory++"
 			} else {
-				"ClockworkDrill:VoxelEras"
+				"SupMiner:Factory++"
 			}
 		).get_variant(voxel.rotation, new_state)
 	);
