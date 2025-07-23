@@ -12,43 +12,27 @@ fn define(mod_info) {
 		"factoryplusplus/assets/models/Super Miner.glb"
 	));
 
+	mod_info.add(ModelBuilder(
+		"SupMinerOff:Factory++",
+		"factoryplusplus/assets/models/Super Miner.glb"
+	));
+
+	mod_info.add(ModelBuilder(
+		"SupMinerOn:Factory++",
+		"factoryplusplus/assets/models/Super Miner.glb"
+	));
+
+	mod_info.add(ModelBuilder(
+		"SupMinerStuck:Factory++",
+		"factoryplusplus/assets/models/Super Miner.glb"
+	));
+
 	mod_info.add(TextureBuilder(
         "SupMinerIcon:Factory++",
         "voxel_eras/assets/textures/ClockworkDrillSide.png",
     ));
 
-	define_variant(
-		"SupMinerOff:Factory++",
-		"Miner (Unpowered)",
-		SolidVoxelModel(
-			"voxel_eras/assets/textures/OakPlankOutput.png",
-			"voxel_eras/assets/textures/ClockworkDrillSide.png",
-			"voxel_eras/assets/textures/OakWoodPlank.png"
-		),
-		mod_info
-	);
-
-	define_variant(
-		"SupMinerOn:Factory++",
-		"Miner (powered)",
-		SolidVoxelModel(
-			"voxel_eras/assets/textures/OakPlankOutput.png",
-			"voxel_eras/assets/textures/ClockworkDrillSideAnim.png",
-			"voxel_eras/assets/textures/OakWoodPlank.png"
-		),
-		mod_info
-	);
-
-	define_variant(
-		"SupMinerStuck:Factory++",
-		"Miner (Stalled)",
-		SolidVoxelModel(
-			"voxel_eras/assets/textures/OakPlankOutput.png",
-			"voxel_eras/assets/textures/ClockworkDrillSideStuckAnim.png",
-			"voxel_eras/assets/textures/OakWoodPlank.png"
-		),
-		mod_info
-	);
+	
 
 	let default_place_variant = WeakVoxelVariant("SupMiner:Factory++", voxel::ROT_UP)
 		.add_state("State:LastInteracted", metadata::U64(0))
