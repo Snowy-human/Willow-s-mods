@@ -19,7 +19,7 @@ fn define(mod_info) {
 		).model(TransparentVoxelModel("factoryplusplus/assets/textures/water.png"))
 		.lighting(voxel::LIGHT_TRANSPARENT)
 		.break_rate(voxel::BREAK_RATE_FRAGILE)
-		.pipette("CrudeGlass:Factory++",)
+		.pipette("Water:Factory++",)
 		.tag("Solid:VoxelEras")
 	);
 
@@ -42,3 +42,28 @@ fn define(mod_info) {
 		.priority(10)
 	);
 }
+
+fn on_break(voxel, location, target, entity, game_state) {
+	if location == target {
+		game_state.drop(WeakItemStack("Water:Factory++", 1), location);
+	}
+
+	event::ACCEPT
+}
+
+fn on_tick(voxel, location, game_state)
+	let voxel = game_state.get_voxel(location);
+	let level = utility::get_liquid_level(location, game_state);
+	let current_level = utility::get_liquid_level(location, game_state);
+	
+	if level != 0 && current_level == 0 || level == 0 && current_level != 0 {
+		let state = voxel.metadata;
+		state.set_u64("State:LiquidLevel", if level == 0 { 0 } else { 32 });
+		
+		game_state.send_message(location.north(), "LIQUID_UPDATE", ());
+		game_state.send_message(location.up(), "LIQUID_UPDATE", ());
+		game_state.send_message(location.east(), "LIQUID_UPDATE", ());
+		game_state.send_message(location.south(), "LIQUID_UPDATE", ());
+		game_state.send_message(location.down(), "LIQUID_UPDATE", ());
+		game_state.send_message(location.west(), "LIQUID_UPDATE", ());
+	}
