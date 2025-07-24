@@ -31,13 +31,12 @@ fn get_surrounding_liquid_level(location, game_state) {
 		.max(get_liquid_level(location.west(), "East", game_state))
 }
 
-fn set_liquid_level(location, side, game_state) {
-
+fn set_liquid_level(location, side, game_state, liquid_input) {
 	if voxel.prefab.name == "Air:VoxelEras" {
 		ConstructVariantBuilder(voxel::ROT_UP)
 				.place(
 					0, 0, 0,
-					WeakVoxelVariant("Water:Factory++", voxel::ROT_UP)
+					WeakVoxelVariant(liquid_input, voxel::ROT_UP).add_state("State:LiquidLevel", metadata::U64(32))
 				)
 	} else {
 		level
