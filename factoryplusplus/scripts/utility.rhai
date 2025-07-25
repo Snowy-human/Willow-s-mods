@@ -32,13 +32,7 @@ fn get_surrounding_liquid_level(location, game_state) {
 }
 
 fn set_liquid_level(location, side, game_state, liquid_input) {
-	if voxel.prefab.name == "Air:VoxelEras" {
-		ConstructVariantBuilder(voxel::ROT_UP)
-				.place(
-					0, 0, 0,
-					WeakVoxelVariant(liquid_input, voxel::ROT_UP).add_state("State:LiquidLevel", metadata::U64(32))
-				)
-	} else {
-		level
+	if get_voxel(game_state,location) == "Air:VoxelEras" {
+		set_voxel(game_stat, location, liquid_input)
 	}
 }

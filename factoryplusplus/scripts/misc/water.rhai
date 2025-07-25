@@ -82,14 +82,14 @@ fn on_tick(voxel, location, game_state) {
 		let state = voxel.metadata;
 		state.set_u64("State:LiquidLevel", if level == 0 { 0 } else { 32 });
 		game_state.set_voxel(location, game_state.get_voxel_prefab("Water" + if level == 1 { "Source" } else { "" } + ":Factory++").get_variant(voxel.rotation, state));
-		
 		game_state.send_message(location.north(), "LIQUID_UPDATE", ());
 		game_state.send_message(location.up(), "LIQUID_UPDATE", ());
 		game_state.send_message(location.east(), "LIQUID_UPDATE", ());
 		game_state.send_message(location.south(), "LIQUID_UPDATE", ());
 		game_state.send_message(location.down(), "LIQUID_UPDATE", ());
 		game_state.send_message(location.west(), "LIQUID_UPDATE", ());
+		
+		set_liquid_level(location.north(), "South", game_state,"Water:Factory++")
 	}
-
 	event::ACCEPT
 }
